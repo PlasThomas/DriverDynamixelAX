@@ -1,0 +1,200 @@
+[0.954s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'list', '-p', '--base-paths', '/home/robousr/ROS2Dev/DriverAX']
+[0.973s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='list', build_base='build', ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['/home/robousr/ROS2Dev/DriverAX'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], topological_order=False, names_only=False, paths_only=True, topological_graph=False, topological_graph_dot=False, topological_graph_density=False, topological_graph_legend=False, topological_graph_dot_cluster=False, topological_graph_dot_include_skipped=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7f6d576db100>, verb_extension=<colcon_package_information.verb.list.ListVerb object at 0x7f6d576da170>, main=<bound method ListVerb.main of <colcon_package_information.verb.list.ListVerb object at 0x7f6d576da170>>, mixin_verb=('list',))
+[3.960s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[3.966s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[3.967s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[3.967s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[3.967s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[3.968s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/robousr/ROS2Dev/DriverAX'
+[3.968s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extensions ['ignore', 'ignore_ament_install']
+[3.968s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extension 'ignore'
+[3.968s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extension 'ignore_ament_install'
+[3.969s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extensions ['colcon_pkg']
+[3.969s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extension 'colcon_pkg'
+[3.970s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extensions ['colcon_meta']
+[3.970s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extension 'colcon_meta'
+[3.970s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extensions ['ros']
+[3.970s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extension 'ros'
+[4.169s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extensions ['cmake', 'python']
+[4.169s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extension 'cmake'
+[4.170s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extension 'python'
+[4.170s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extensions ['python_setup_py']
+[4.173s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX) by extension 'python_setup_py'
+[4.173s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/log) by extensions ['ignore', 'ignore_ament_install']
+[4.174s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/log) by extension 'ignore'
+[4.174s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/log) ignored
+[4.174s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extensions ['ignore', 'ignore_ament_install']
+[4.176s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extension 'ignore'
+[4.179s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extension 'ignore_ament_install'
+[4.180s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extensions ['colcon_pkg']
+[4.181s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extension 'colcon_pkg'
+[4.182s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extensions ['colcon_meta']
+[4.183s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extension 'colcon_meta'
+[4.183s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extensions ['ros']
+[4.186s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extension 'ros'
+[4.187s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extensions ['cmake', 'python']
+[4.187s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extension 'cmake'
+[4.190s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extension 'python'
+[4.191s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extensions ['python_setup_py']
+[4.192s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src) by extension 'python_setup_py'
+[4.193s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extensions ['ignore', 'ignore_ament_install']
+[4.193s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extension 'ignore'
+[4.193s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extension 'ignore_ament_install'
+[4.194s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extensions ['colcon_pkg']
+[4.194s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extension 'colcon_pkg'
+[4.194s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extensions ['colcon_meta']
+[4.194s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extension 'colcon_meta'
+[4.198s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extensions ['ros']
+[4.198s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extension 'ros'
+[4.199s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extensions ['cmake', 'python']
+[4.199s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extension 'cmake'
+[4.199s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extension 'python'
+[4.199s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extensions ['python_setup_py']
+[4.200s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX) by extension 'python_setup_py'
+[4.200s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[4.200s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces) by extension 'ignore'
+[4.201s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces) by extension 'ignore_ament_install'
+[4.201s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces) by extensions ['colcon_pkg']
+[4.201s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces) by extension 'colcon_pkg'
+[4.201s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces) by extensions ['colcon_meta']
+[4.201s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces) by extension 'colcon_meta'
+[4.207s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces) by extensions ['ros']
+[4.209s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces) by extension 'ros'
+[4.218s] DEBUG:colcon.colcon_core.package_identification:Package '/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_custom_interfaces' with type 'ros.ament_cmake' and name 'dynamixel_sdk_custom_interfaces'
+[4.220s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extensions ['ignore', 'ignore_ament_install']
+[4.222s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extension 'ignore'
+[4.222s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extension 'ignore_ament_install'
+[4.223s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extensions ['colcon_pkg']
+[4.223s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extension 'colcon_pkg'
+[4.224s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extensions ['colcon_meta']
+[4.225s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extension 'colcon_meta'
+[4.225s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extensions ['ros']
+[4.225s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extension 'ros'
+[4.226s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extensions ['cmake', 'python']
+[4.226s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extension 'cmake'
+[4.226s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extension 'python'
+[4.229s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extensions ['python_setup_py']
+[4.232s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver) by extension 'python_setup_py'
+[4.232s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extensions ['ignore', 'ignore_ament_install']
+[4.233s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extension 'ignore'
+[4.233s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extension 'ignore_ament_install'
+[4.233s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extensions ['colcon_pkg']
+[4.233s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extension 'colcon_pkg'
+[4.233s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extensions ['colcon_meta']
+[4.233s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extension 'colcon_meta'
+[4.234s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extensions ['ros']
+[4.234s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extension 'ros'
+[4.235s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extensions ['cmake', 'python']
+[4.235s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extension 'cmake'
+[4.235s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extension 'python'
+[4.236s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extensions ['python_setup_py']
+[4.236s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/build) by extension 'python_setup_py'
+[4.237s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extensions ['ignore', 'ignore_ament_install']
+[4.237s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extension 'ignore'
+[4.238s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extension 'ignore_ament_install'
+[4.240s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extensions ['colcon_pkg']
+[4.240s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extension 'colcon_pkg'
+[4.240s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extensions ['colcon_meta']
+[4.240s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extension 'colcon_meta'
+[4.241s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extensions ['ros']
+[4.242s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extension 'ros'
+[4.242s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extensions ['cmake', 'python']
+[4.242s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extension 'cmake'
+[4.243s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extension 'python'
+[4.243s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extensions ['python_setup_py']
+[4.243s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/include) by extension 'python_setup_py'
+[4.244s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extensions ['ignore', 'ignore_ament_install']
+[4.244s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extension 'ignore'
+[4.245s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extension 'ignore_ament_install'
+[4.245s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extensions ['colcon_pkg']
+[4.245s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extension 'colcon_pkg'
+[4.245s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extensions ['colcon_meta']
+[4.245s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extension 'colcon_meta'
+[4.246s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extensions ['ros']
+[4.246s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extension 'ros'
+[4.246s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extensions ['cmake', 'python']
+[4.246s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extension 'cmake'
+[4.246s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extension 'python'
+[4.247s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extensions ['python_setup_py']
+[4.247s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib) by extension 'python_setup_py'
+[4.247s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extensions ['ignore', 'ignore_ament_install']
+[4.248s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extension 'ignore'
+[4.248s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extension 'ignore_ament_install'
+[4.248s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extensions ['colcon_pkg']
+[4.248s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extension 'colcon_pkg'
+[4.248s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extensions ['colcon_meta']
+[4.248s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extension 'colcon_meta'
+[4.248s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extensions ['ros']
+[4.248s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extension 'ros'
+[4.249s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extensions ['cmake', 'python']
+[4.249s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extension 'cmake'
+[4.249s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extension 'python'
+[4.249s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extensions ['python_setup_py']
+[4.249s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include) by extension 'python_setup_py'
+[4.250s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extensions ['ignore', 'ignore_ament_install']
+[4.250s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extension 'ignore'
+[4.251s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extension 'ignore_ament_install'
+[4.256s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extensions ['colcon_pkg']
+[4.256s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extension 'colcon_pkg'
+[4.257s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extensions ['colcon_meta']
+[4.258s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extension 'colcon_meta'
+[4.259s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extensions ['ros']
+[4.259s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extension 'ros'
+[4.259s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extensions ['cmake', 'python']
+[4.259s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extension 'cmake'
+[4.260s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extension 'python'
+[4.260s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extensions ['python_setup_py']
+[4.260s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/include/dynamixel_sdk) by extension 'python_setup_py'
+[4.260s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extensions ['ignore', 'ignore_ament_install']
+[4.261s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extension 'ignore'
+[4.261s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extension 'ignore_ament_install'
+[4.262s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extensions ['colcon_pkg']
+[4.262s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extension 'colcon_pkg'
+[4.262s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extensions ['colcon_meta']
+[4.262s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extension 'colcon_meta'
+[4.262s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extensions ['ros']
+[4.263s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extension 'ros'
+[4.263s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extensions ['cmake', 'python']
+[4.263s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extension 'cmake'
+[4.263s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extension 'python'
+[4.263s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extensions ['python_setup_py']
+[4.264s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src) by extension 'python_setup_py'
+[4.264s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extensions ['ignore', 'ignore_ament_install']
+[4.264s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extension 'ignore'
+[4.264s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extension 'ignore_ament_install'
+[4.264s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extensions ['colcon_pkg']
+[4.264s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extension 'colcon_pkg'
+[4.264s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extensions ['colcon_meta']
+[4.265s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extension 'colcon_meta'
+[4.265s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extensions ['ros']
+[4.266s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extension 'ros'
+[4.267s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extensions ['cmake', 'python']
+[4.267s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extension 'cmake'
+[4.267s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extension 'python'
+[4.268s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extensions ['python_setup_py']
+[4.273s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/lib/src/dynamixel_sdk) by extension 'python_setup_py'
+[4.282s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extensions ['ignore', 'ignore_ament_install']
+[4.282s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extension 'ignore'
+[4.282s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extension 'ignore_ament_install'
+[4.283s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extensions ['colcon_pkg']
+[4.283s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extension 'colcon_pkg'
+[4.283s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extensions ['colcon_meta']
+[4.283s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extension 'colcon_meta'
+[4.300s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extensions ['ros']
+[4.302s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extension 'ros'
+[4.302s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extensions ['cmake', 'python']
+[4.303s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extension 'cmake'
+[4.303s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extension 'python'
+[4.303s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extensions ['python_setup_py']
+[4.315s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_ax_driver/src) by extension 'python_setup_py'
+[4.316s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk) by extensions ['ignore', 'ignore_ament_install']
+[4.321s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk) by extension 'ignore'
+[4.321s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk) by extension 'ignore_ament_install'
+[4.322s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk) by extensions ['colcon_pkg']
+[4.322s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk) by extension 'colcon_pkg'
+[4.322s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk) by extensions ['colcon_meta']
+[4.322s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk) by extension 'colcon_meta'
+[4.322s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk) by extensions ['ros']
+[4.322s] Level 1:colcon.colcon_core.package_identification:_identify(/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk) by extension 'ros'
+[4.342s] DEBUG:colcon.colcon_core.package_identification:Package '/home/robousr/ROS2Dev/DriverAX/src/DriverAX/dynamixel_sdk' with type 'ros.ament_cmake' and name 'dynamixel_sdk'
+[4.343s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults

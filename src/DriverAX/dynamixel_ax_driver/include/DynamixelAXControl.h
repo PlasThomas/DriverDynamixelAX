@@ -28,6 +28,7 @@ class DynamixelAXControl{
     // Variables privadas
     private:
         //Metodos privados.
+        int clamp(int value, int minLimit, int maxLimit);//
         bool pingServo();//
         bool setCWAngleLimit(int nlimit);//
         bool setCCWAngleLimit(int nlimit);//
@@ -43,6 +44,5 @@ class DynamixelAXControl{
         dynamixel::PacketHandler* packetHandler;
         uint8_t dxl_error;
         int dxl_comm_result;
-        int dxl_model_number;
 };
 #endif
