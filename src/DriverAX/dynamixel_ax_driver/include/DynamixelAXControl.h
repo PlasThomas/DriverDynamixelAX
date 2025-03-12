@@ -9,19 +9,19 @@ class DynamixelAXControl{
         // Constructor y destructor
         DynamixelAXControl(const std::string& sPort, int nBaudrate, int idMotor);
         ~DynamixelAXControl();
-        //getters
+        // Getters
         int get_dxl_comm_result();
         std::string get_message();
         uint8_t get_dxl_error();
         // Funcionalidades para el motor.
         bool connect();//
         void disconnect();//
-        bool setWheelMode();//
+        bool setWheelMode();
         bool setJointMode(int cwLimit, int ccwLimit);
         bool setPosition(int position);
         bool setSpeed(int speed);//
-        int getPosition();
-        int getSpeed();
+        int getPosition();//
+        int getSpeed();//
         int getVoltaje();
         int getTemperature();
         bool getMoving();
@@ -29,6 +29,9 @@ class DynamixelAXControl{
     private:
         //Metodos privados.
         int clamp(int value, int minLimit, int maxLimit);//
+        bool write1byte(int address, int value);
+        bool write2byte(int address, int value);
+        int read2byte(int address);
         bool pingServo();//
         bool setCWAngleLimit(int nlimit);//
         bool setCCWAngleLimit(int nlimit);//
