@@ -17,6 +17,7 @@
 //Invocacion de librerias
 //#include <Python.h>
 #include <iostream>
+#include <memory>
 #include <stdexcept>
 #include <string>
 #include "DynamixelAXControl.h"
@@ -49,8 +50,6 @@
 #define ADDR_MOVING 46                  //REGISTROS DE SOLO LECTURA
 #define ADDR_LOCK 47 // De 0 o 1
 #define ADDR_PUNCH 48 // De 0 a 1023
-// Protocolo de comunicacion
-#define PROTOCOL_VERSION 1.0
 // Parametros de funcionamiento
 #define MAX_ANGLE_LIMIT 1023
 #define MIN_ANGLE_LIMIT 0
@@ -59,24 +58,16 @@
 #define MAX_WHEEL_SPEED 2047
 #define HEADER_MESSAGE "[ID: "+std::to_string(this->idMotor)+"] "
 
-    DynamixelAXControl::DynamixelAXControl(const std::string& sPort, int nBaudrate, int idMotor):sPort(sPort), nBaudrate(nBaudrate), idMotor(idMotor){
-        portHandler = dynamixel::PortHandler::getPortHandler(sPort.c_str());
-        packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
+    DynamixelAXControl::DynamixelAXControl(DynamixelManager* control, int idMotor):control(control), idMotor(idMotor){
         int nCwlimit = 0;
         int nCcwlimit = 0;
-        dxl_error = 0;
-        dxl_comm_result = COMM_TX_FAIL;
         bWheelMode = false;
     }
     
-    DynamixelAXControl::~DynamixelAXControl(){
-        disconnect();
-        delete portHandler;
-        delete packetHandler;
-    }
-    
+    DynamixelAXControl::~DynamixelAXControl(){}
+
     int DynamixelAXControl::get_dxl_comm_result(){
-        return this -> dxl_comm_result;
+        return control -> get_dxl_comm_result();
     }
     
     std::string DynamixelAXControl::get_message(){
@@ -84,94 +75,66 @@
     }
     
     uint8_t DynamixelAXControl::get_dxl_error(){
-        return this -> dxl_error;
+        return control -> get_dxl_error();
     }
     
     bool DynamixelAXControl::connect(){
-        dxl_comm_result = portHandler->openPort();
-        if (dxl_comm_result==false) {
-            sMessage.assign("Failed to open the port!\n");
+        if(!control -> getStatusConnection()){
+            sMessage.append("Connection not available\n");
             return false;
+        }
+        if(!control -> pingServo(idMotor)){
+            sMessage.assign("ERROR: Servo [id:"+std::to_string(this->idMotor)+"] not found!\n");
+            return false;
+        }
+        nCwlimit = control -> read2byte(idMotor, ADDR_CW_ANGLE_LIMIT);
+        nCcwlimit = control -> read2byte(idMotor, ADDR_CCW_ANGLE_LIMIT);
+        if(nCwlimit < 0 || nCcwlimit < 0){
+            sMessage.assign(HEADER_MESSAGE + "Fail to evaluate mode.\n");   
+            return false;
+        }else if(nCcwlimit == 0 || nCwlimit == 0){
+            bWheelMode = true;
+            sMessage.assign(HEADER_MESSAGE + "in wheel mode.\n");
         }else{
-            sMessage.assign("Succeeded to open the port.\n");
-            dxl_comm_result = portHandler->setBaudRate(nBaudrate);
-            if (dxl_comm_result==false) {
-                sMessage.append("Failed to set the baudrate!\n");
-                return false;
-            }else{
-                sMessage.append("Succeeded to set the baudrate.\n");
-                try{
-                    if(!pingServo())
-                        throw std::runtime_error("Servo [id:"+std::to_string(this->idMotor)+"] not found!\n");
-                }
-                catch(const std::exception& ex){
-                    std::cerr << "Error: " << ex.what() << std::endl;
-                }
-                dxl_comm_result = packetHandler->read2ByteTxRx(portHandler, idMotor, ADDR_CCW_ANGLE_LIMIT,(uint16_t*)&nCcwlimit);
-                dxl_comm_result = packetHandler->read2ByteTxRx(portHandler, idMotor, ADDR_CW_ANGLE_LIMIT,(uint16_t*)&nCwlimit);
-                if(nCcwlimit == 0 || nCwlimit == 0){
-                    bWheelMode = true;
-                    sMessage.append(HEADER_MESSAGE + "Wheel mode.\n");
-                }else{
-                    bWheelMode = false;
-                    sMessage.append(HEADER_MESSAGE + "Joint mode.\n");
-                }
-                return true;
-            }
+            bWheelMode = false;
+            sMessage.assign(HEADER_MESSAGE + "Joint mode.\n");
         }
+        return true;
+            
     }
-    
-    void DynamixelAXControl::disconnect(){
-        portHandler->closePort();
-        sMessage.assign("Connection Finished.");
-    }
-    
+
     bool DynamixelAXControl::setWheelMode(){
-        if(bWheelMode){
-            sMessage.assign(HEADER_MESSAGE +"Servo already in wheel mode.\n");
-            return true;
-        }
-        // Desactiva el torque
-        if (!write1byte(ADDR_TORQUE_ENABLE, 0)) {
+        if (!control -> write1byte(idMotor,ADDR_TORQUE_ENABLE, 0)) {
             sMessage.assign(HEADER_MESSAGE +"Failed to disable torque!\n");
             return false;
         }
-        sMessage.assign(HEADER_MESSAGE +"Succeeded to disable torque.\n");
-        // Configura el modo rueda poniendo los limites de angulo en 0
         if(!setCWAngleLimit(0))
             return false;
         if(!setCCWAngleLimit(0))
             return false;
-        // Activa el torque
-        if (!write1byte(ADDR_TORQUE_ENABLE, 1)) {
-            sMessage.append(HEADER_MESSAGE +"Failed to enable torque!\n");
+        if (!control -> write1byte(idMotor, ADDR_TORQUE_ENABLE, 1)) {
+            sMessage.assign(HEADER_MESSAGE +"Failed to enable torque!\n");
             return false;
         }
-        sMessage.append(HEADER_MESSAGE +"Succeeded to enable torque.\n");
-        sMessage.append(HEADER_MESSAGE +"Succeeded to set in wheel mode.\n");
+        sMessage.assign(HEADER_MESSAGE +"Succeeded to set in wheel mode.\n");
         bWheelMode = true;
         return true;
     }
     
     bool DynamixelAXControl::setJointMode(int cwLimit, int ccwLimit){
-        // Desactiva el torque
-        if (!write1byte(ADDR_TORQUE_ENABLE, 0)) {
+        if (!control -> write1byte(idMotor, ADDR_TORQUE_ENABLE, 0)) {
             sMessage.assign(HEADER_MESSAGE +"Failed to disable torque!\n");
             return false;
         }
-        sMessage.assign(HEADER_MESSAGE +"Succeeded to disable torque.\n");
-        // Se establecen los angulos limites en cada sentido
         if(!setCWAngleLimit(cwLimit))
             return false;
         if(!setCCWAngleLimit(ccwLimit))
             return false;
-        // Activa el torque
-        if (!write1byte(ADDR_TORQUE_ENABLE, 1)) {
-            sMessage.append(HEADER_MESSAGE +"Failed to enable torque!\n");
+        if (!control -> write1byte(idMotor, ADDR_TORQUE_ENABLE, 1)) {
+            sMessage.assign(HEADER_MESSAGE +"Failed to enable torque!\n");
             return false;
         }
-        sMessage.append(HEADER_MESSAGE +"Succeeded to enable torque.\n");
-        sMessage.append(HEADER_MESSAGE +"Succeeded to set in joint mode.\n");
+        sMessage.assign(HEADER_MESSAGE +"Succeeded to set in joint mode.\n");
         bWheelMode = false;
         return true;
     }
@@ -186,11 +149,11 @@
             sMessage.append(HEADER_MESSAGE +"Value out of range!\n");
         }
         goalPosition = (uint16_t) clamp(position,nCwlimit,nCcwlimit);
-        if (!write2byte(ADDR_GOAL_POSITION, goalPosition)) {
+        if (!control -> write2byte(idMotor,ADDR_GOAL_POSITION, goalPosition)) {
             sMessage.append(HEADER_MESSAGE +"Failed to set position!\n");
             return false;
         }
-        sMessage.append(HEADER_MESSAGE +"Succeeded to set position.\n");
+        sMessage.append(HEADER_MESSAGE +"set in position: "+ std::to_string(goalPosition) +".\n");
         return true;
     }
     
@@ -208,16 +171,16 @@
             goalSpeed = (uint16_t) clamp(speed,MIN_SPEED,MAX_JOINT_SPEED);
         }
         goalSpeed = (uint16_t) speed;
-        if (!write2byte(ADDR_MOVING_SPEED, goalSpeed)) {
-            sMessage.append(HEADER_MESSAGE +"Failed to set speed!\n");
+        if (!control -> write2byte(idMotor,ADDR_MOVING_SPEED, goalSpeed)) {
+            sMessage.assign(HEADER_MESSAGE +"Failed to set speed!\n");
             return false;
         }
-        sMessage.append(HEADER_MESSAGE +"Succeeded to set speed.\n");
+        sMessage.assign(HEADER_MESSAGE +"set speed to "+ std::to_string(goalSpeed) +".\n");
         return true;
     }
     
     int DynamixelAXControl::getPosition(){
-        int position = read2byte(ADDR_PRESENT_POSITION);
+        int position = control -> read2byte(idMotor,ADDR_PRESENT_POSITION);
         if (position != -1) 
             sMessage.assign(HEADER_MESSAGE +"Current position: "+std::to_string(position)+" \n");
          else 
@@ -226,7 +189,7 @@
     }
     
     int DynamixelAXControl::getSpeed(){
-        int speed = read2byte(ADDR_PRESENT_SPEED);
+        int speed = control -> read2byte(idMotor,ADDR_PRESENT_SPEED);
         if (speed != -1) 
             sMessage.assign(HEADER_MESSAGE +"Present speed: "+std::to_string(speed)+" \n");
         else 
@@ -235,9 +198,8 @@
     }
     
     int DynamixelAXControl::getVoltaje(){
-        int voltaje = 0;
-        dxl_comm_result = packetHandler->read1ByteTxRx(portHandler, idMotor, ADDR_PRESENT_VOLTAJE, (uint8_t*)&voltaje);
-        if (dxl_comm_result == COMM_SUCCESS) {
+        int voltaje = control -> read1byte(idMotor, ADDR_PRESENT_VOLTAJE);
+        if (voltaje != -1) {
             sMessage.assign(HEADER_MESSAGE +"Present voltaje: "+std::to_string(voltaje)+" \n");
         } else {
             sMessage.assign(HEADER_MESSAGE +"Error getting present voltaje.");
@@ -246,9 +208,8 @@
     }
     
     int DynamixelAXControl::getTemperature(){
-        int temperature = 0;
-        dxl_comm_result = packetHandler->read1ByteTxRx(portHandler, idMotor, ADDR_PRESENT_TEMPERATURE, (uint8_t*)&temperature);
-        if (dxl_comm_result == COMM_SUCCESS) {
+        int temperature = control -> read1byte(idMotor, ADDR_PRESENT_TEMPERATURE);
+        if (temperature != -1) {
             sMessage.assign("[ID: "+std::to_string(this->idMotor)+"] Present temperature: "+std::to_string(temperature)+" \n");
         } else {
             sMessage.assign("[ID: "+std::to_string(this->idMotor)+"] Error getting present temperature.");
@@ -258,48 +219,21 @@
     
     bool DynamixelAXControl::getMoving(){return true;}
 
-    bool DynamixelAXControl::pingServo(){
-        dxl_comm_result = packetHandler->ping(portHandler, idMotor, &dxl_error);
-        if (dxl_comm_result != COMM_SUCCESS) {
-            sMessage.append("Servo [id:"+std::to_string(this->idMotor)+"] not found!\n");
-            return false;
-        }
-        sMessage.append("Servo [id:"+std::to_string(this->idMotor)+"] successfully found!\n");
-            return true;
-    }
-
     int DynamixelAXControl::clamp(int value, int minLimit, int maxLimit){
         return (value < minLimit) ? minLimit : (value > maxLimit) ? maxLimit : value;
     }
     
-    bool DynamixelAXControl::write1byte(int address, int value){
-        dxl_comm_result = packetHandler->write1ByteTxRx(portHandler, idMotor, address, value, &dxl_error);
-        if (dxl_comm_result!= COMM_SUCCESS)
-            return false;
-        else
-            return true;
-    }
-
-    bool DynamixelAXControl::write2byte(int address, int value){
-        dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, idMotor, address, value, &dxl_error);
-        if (dxl_comm_result!= COMM_SUCCESS)
-            return false;
-        else
-            return true;
-    }
-
     bool DynamixelAXControl::setCWAngleLimit(int limit){
         uint16_t cwLimit;
         if(cwLimit > MAX_ANGLE_LIMIT || cwLimit < MIN_ANGLE_LIMIT){
             sMessage.assign(HEADER_MESSAGE +"Value out of range!\n");
         }
         cwLimit = (uint16_t) clamp(limit,MIN_ANGLE_LIMIT,MAX_ANGLE_LIMIT);
-        if (!write2byte(ADDR_CW_ANGLE_LIMIT,cwLimit)){
+        if (!control -> write2byte(idMotor,ADDR_CW_ANGLE_LIMIT,cwLimit)){
             sMessage.assign(HEADER_MESSAGE +"Failed to set cw angle limit!\n");
             return false;
         }
         nCwlimit = cwLimit;
-        sMessage.append(HEADER_MESSAGE +"Succeeded to set cw angle limit.\n");
         return true;
     }
 
@@ -310,20 +244,10 @@
             return false;
         }
         ccwLimit = (uint16_t) clamp(limit,MIN_ANGLE_LIMIT,MAX_ANGLE_LIMIT);
-        if (!write2byte(ADDR_CW_ANGLE_LIMIT,ccwLimit)){
+        if (!control -> write2byte(idMotor, ADDR_CW_ANGLE_LIMIT,ccwLimit)){
             sMessage.assign(HEADER_MESSAGE +"Failed to set cw angle limit!\n");
             return false;
         }
         nCcwlimit = ccwLimit;
-        sMessage.append(HEADER_MESSAGE +"Succeeded to set ccw angle limit.\n");
         return true;
-    }
-
-    int DynamixelAXControl::read2byte(int address){
-        int value = 0;
-        dxl_comm_result = packetHandler->read2ByteTxRx(portHandler, idMotor, address , (uint16_t*)&value);
-        if(dxl_comm_result==COMM_SUCCESS)
-            return value;
-        else    
-            return -1;
     }

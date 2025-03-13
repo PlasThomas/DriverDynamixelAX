@@ -4,8 +4,8 @@ LDFLAGS = -Llib -ldxl_x64_cpp
 SRC_DIR = src
 BUILD_DIR = build
 
-SRCS = $(SRC_DIR)/DynamixelAXControl.cpp $(SRC_DIR)/prueba.cpp
-OBJS = $(BUILD_DIR)/DynamixelAXControl.o $(BUILD_DIR)/prueba.o
+SRCS = $(SRC_DIR)/DynamixelManager.cpp $(SRC_DIR)/DynamixelAXControl.cpp $(SRC_DIR)/prueba.cpp
+OBJS = $(BUILD_DIR)/DynamixelManager.o $(BUILD_DIR)/DynamixelAXControl.o $(BUILD_DIR)/prueba.o
 TARGET = $(BUILD_DIR)/ejemplo
 
 all: $(TARGET)
