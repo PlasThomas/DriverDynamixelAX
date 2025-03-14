@@ -64,10 +64,10 @@
         if(!bConnection)
             return false;
         dxl_comm_result = packetHandler->ping(portHandler, idServo, &dxl_error);
-        if (dxl_comm_result != COMM_SUCCESS)
-            return false;
-        else
-            return true;
+            if (dxl_comm_result != COMM_SUCCESS)
+                return false;
+            else
+                return true;
     }
 
     bool DynamixelManager::write1byte(int idServo, int address, int value){

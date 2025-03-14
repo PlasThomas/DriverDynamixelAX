@@ -10,9 +10,7 @@ class DynamixelAXControl{
         DynamixelAXControl(DynamixelManager* control, int idMotor);
         ~DynamixelAXControl();
         // Getters
-        int get_dxl_comm_result();
         std::string get_message();
-        uint8_t get_dxl_error();
         // Funcionalidades para el motor.
         bool connect();
         bool setWheelMode();
@@ -28,6 +26,10 @@ class DynamixelAXControl{
     private:
         //Metodos privados.
         int clamp(int value, int minLimit, int maxLimit);
+        int convertAngleTOint(float angle, bool degrees);
+        float convertIntTOangle(int angle);
+        int convertRPMtoInt(float rpms);
+        float convertINTtoRPM(int value);
         bool setCWAngleLimit(int nlimit);
         bool setCCWAngleLimit(int nlimit);
         //Variables y objetos privados.

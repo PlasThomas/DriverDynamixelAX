@@ -31,6 +31,9 @@
 #define ADDR_RETURN_DELAY_TIME 5 // De 0 a 254
 #define ADDR_CW_ANGLE_LIMIT 6 // De 0 a 1023
 #define ADDR_CCW_ANGLE_LIMIT 8 // De 0 a 1023
+#define ADDR_MAX_TEMPERATURE 11 // De 0 a 1023
+#define ADDR_MIN_VOLTAJE 12 // De 0 a 1023
+#define ADDR_MAX_VOLTAJE 13 // De 0 a 1023
 #define ADDR_MAX_TORQUE 14 // De 0 a 1023
 #define ADDR_STATUS_RETURN_LIMIT 16 // De 0 a 2
 #define ADDR_ALARM_LED 17 // De 0 a 255
@@ -58,6 +61,7 @@
 #define MAX_WHEEL_SPEED 2047
 #define HEADER_MESSAGE "[ID: "+std::to_string(this->idMotor)+"] "
 
+
     DynamixelAXControl::DynamixelAXControl(DynamixelManager* control, int idMotor):control(control), idMotor(idMotor){
         int nCwlimit = 0;
         int nCcwlimit = 0;
@@ -65,17 +69,9 @@
     }
     
     DynamixelAXControl::~DynamixelAXControl(){}
-
-    int DynamixelAXControl::get_dxl_comm_result(){
-        return control -> get_dxl_comm_result();
-    }
     
     std::string DynamixelAXControl::get_message(){
         return this -> sMessage;
-    }
-    
-    uint8_t DynamixelAXControl::get_dxl_error(){
-        return control -> get_dxl_error();
     }
     
     bool DynamixelAXControl::connect(){
@@ -87,20 +83,19 @@
             sMessage.assign("ERROR: Servo [id:"+std::to_string(this->idMotor)+"] not found!\n");
             return false;
         }
-        nCwlimit = control -> read2byte(idMotor, ADDR_CW_ANGLE_LIMIT);
-        nCcwlimit = control -> read2byte(idMotor, ADDR_CCW_ANGLE_LIMIT);
+        nCwlimit = control->read2byte(idMotor, ADDR_CW_ANGLE_LIMIT);
+        nCcwlimit = control->read2byte(idMotor, ADDR_CCW_ANGLE_LIMIT);
         if(nCwlimit < 0 || nCcwlimit < 0){
             sMessage.assign(HEADER_MESSAGE + "Fail to evaluate mode.\n");   
             return false;
-        }else if(nCcwlimit == 0 || nCwlimit == 0){
+        }else if(nCcwlimit == 0 && nCwlimit == 0){
             bWheelMode = true;
             sMessage.assign(HEADER_MESSAGE + "in wheel mode.\n");
         }else{
             bWheelMode = false;
-            sMessage.assign(HEADER_MESSAGE + "Joint mode.\n");
+            sMessage.assign(HEADER_MESSAGE + "Joint mode to "+std::to_string(nCwlimit)+" at "+std::to_string(nCcwlimit)+".\n");
         }
         return true;
-            
     }
 
     bool DynamixelAXControl::setWheelMode(){
@@ -217,7 +212,17 @@
         return temperature;
     }
     
-    bool DynamixelAXControl::getMoving(){return true;}
+    bool DynamixelAXControl::getMoving(){
+        int moving = control -> read1byte(idMotor,ADDR_MOVING);
+        if (moving == -1){
+            sMessage.assign(HEADER_MESSAGE +"Error getting moving.");
+        }else if(moving == 0){
+            sMessage.assign(HEADER_MESSAGE +"is not moving.");
+            return false;
+        }
+        sMessage.assign(HEADER_MESSAGE +"is moving.");
+        return true;
+    }
 
     int DynamixelAXControl::clamp(int value, int minLimit, int maxLimit){
         return (value < minLimit) ? minLimit : (value > maxLimit) ? maxLimit : value;
@@ -244,10 +249,27 @@
             return false;
         }
         ccwLimit = (uint16_t) clamp(limit,MIN_ANGLE_LIMIT,MAX_ANGLE_LIMIT);
-        if (!control -> write2byte(idMotor, ADDR_CW_ANGLE_LIMIT,ccwLimit)){
+        if (!control -> write2byte(idMotor, ADDR_CCW_ANGLE_LIMIT,ccwLimit)){
             sMessage.assign(HEADER_MESSAGE +"Failed to set cw angle limit!\n");
             return false;
         }
         nCcwlimit = ccwLimit;
         return true;
     }
+
+    int DynamixelAXControl::convertAngleTOint(float angle, bool degrees){
+
+    }
+    
+    float DynamixelAXControl::convertIntTOangle(int angle){
+
+    }
+    
+    int DynamixelAXControl::convertRPMtoInt(float rpms){
+
+    }
+    
+    float DynamixelAXControl::convertINTtoRPM(int value){
+
+    }
+    
